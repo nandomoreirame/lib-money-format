@@ -1,5 +1,5 @@
 {
-  "name": "money-format",
+  "name": "@nandomoreira.me/money-format",
   "libName": "Money",
   "version": "1.0.0",
   "description": "💵 Format your money however you want 💵",
@@ -9,7 +9,9 @@
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint .",
-    "test": "jest --coverage --no-cache --env=node",
+    "jest": "jest --coverage --no-cache --env=node",
+    "test": "yarn lint && yarn jest",
+    "pub": "yarn test && npm publish --access=public",
     "test:watch": "yarn test -- --watch"
   },
   "repository": {
