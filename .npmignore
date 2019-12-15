@@ -1,0 +1,13 @@
+*.log
+*.test.js
+*.txt
+.babelrc
+.editorconfig
+.eslintignore
+.prettierignore
+.prettierrc
+.travis.yml
+.nvmrc
+coverage
+rollup.config.js
+yarn.lock

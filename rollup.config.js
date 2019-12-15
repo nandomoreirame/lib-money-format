@@ -3,21 +3,23 @@ import babel from 'rollup-plugin-babel';
 import replace from 'rollup-plugin-replace';
 import { terser } from 'rollup-plugin-terser';
 
-import pkg from './package.json';
+import { libName, dependencies, peerDependencies } from './package.json';
+
+const fileName = libName.toLowerCase();
 
 export default [
   // CommonJS
   {
     input: 'src/index.js',
     output: {
-      file: `dist/${pkg.name}.js`,
+      file: `lib/${fileName}.js`,
       exports: 'named',
       format: 'cjs',
       indent: false,
     },
     external: [
-      ...Object.keys(pkg.dependencies || {}),
-      ...Object.keys(pkg.peerDependencies || {}),
+      ...Object.keys(dependencies || {}),
+      ...Object.keys(peerDependencies || {}),
     ],
     plugins: [],
   },
@@ -26,13 +28,13 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      file: `dist/es/${pkg.name}.js`,
+      file: `lib/es/${fileName}.js`,
       format: 'es',
       indent: false,
     },
     external: [
-      ...Object.keys(pkg.dependencies || {}),
-      ...Object.keys(pkg.peerDependencies || {}),
+      ...Object.keys(dependencies || {}),
+      ...Object.keys(peerDependencies || {}),
     ],
     plugins: [],
   },
@@ -41,7 +43,7 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      file: `dist/es/${pkg.name}.mjs`,
+      file: `lib/es/${fileName}.mjs`,
       format: 'es',
       indent: false,
     },
@@ -68,10 +70,10 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      file: `dist/umd/${pkg.name}.js`,
+      file: `lib/umd/${fileName}.js`,
       format: 'umd',
       exports: 'named',
-      name: `${pkg.libName}`,
+      name: `${libName}`,
       indent: false,
     },
     plugins: [
@@ -89,10 +91,10 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      file: `dist/umd/${pkg.name}.min.js`,
+      file: `lib/umd/${fileName}.min.js`,
       format: 'umd',
       exports: 'named',
-      name: `${pkg.libName}`,
+      name: `${libName}`,
       indent: false,
     },
     plugins: [
