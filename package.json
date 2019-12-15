@@ -1,7 +1,7 @@
 {
   "name": "@nandomoreira.me/money-format",
   "libName": "Money",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "💵 Format your money however you want 💵",
   "main": "dist/money-format.js",
   "unpkg": "dist/umd/money-format.js",
